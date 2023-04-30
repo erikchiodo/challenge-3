@@ -27,34 +27,42 @@ function generatePassword() {
     number: "0123456789",
   };
 
-  var password_string = "";
+  var pw_array = [];
   // Confirm statements (lower, upper, special, number)
   if (confirm("Do you want lowercase letters in your password? Press OK for yes and Cancel for no")) 
     {
-    password_string = password_string + password_details.lower;
-    console.log(password_string);
-  }
+    pw_array.push(password_details.lower);
+    console.log(pw_array);
+    }
   if (confirm("Do you want uppercase letters in your password? Press OK for yes and Cancel for no")) 
   {
-    password_string = password_string + password_details.upper;
-    console.log(password_string);
+    pw_array.push(password_details.upper);
+    console.log(pw_array);
   }
   if (confirm("Do you want special characters in your password? Press OK for yes and Cancel for no")) 
   {
-    password_string = password_string + password_details.special;
-    console.log(password_string);
+    pw_array.push(password_details.special);
+    console.log(pw_array);
   }
-  if (confirm("Do you want numbers in your password? Press OK for yes and Cancel for no")) 
+  if (confirm("Do you want numbers in your password? Press OK for yes and Cancel for no"))
   {
-    password_string = password_string + password_details.number;
-    console.log(password_string);
-  } else {alert("No characters selected!");}
+    pw_array.push(password_details.number);
+    console.log(pw_array);
+  } else {
+    alert("No characters selected!")
+    return;
+  }
 
   var password = "";
   // Loop to generate password
   for (var i = 0; i < password_length; i++) {
-    const randomIndex = Math.floor(Math.random() * password_string.length);
-    password = password + password_string[randomIndex];
+    let randomIndex = Math.floor(Math.random() * pw_array.length);
+    console.log(randomIndex)
+    let selectedIndex = pw_array[randomIndex]
+    let randomValue = Math.floor(Math.random() * selectedIndex.length);
+    let selectedCharacter = selectedIndex[randomValue]
+    password += selectedCharacter
+    console.log(password)
   }
   return password;
 }
