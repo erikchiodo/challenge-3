@@ -56,10 +56,17 @@ function generatePassword() {
   var password = "";
   // Loop to generate password
   for (var i = 0; i < password_length; i++) {
+    // Creates random number based on the number of indices in array
     let randomIndex = Math.floor(Math.random() * pw_array.length);
     console.log(randomIndex)
+
+    // Selects index based on random number created
     let selectedIndex = pw_array[randomIndex]
+
+    // Generates random numbers based on length of random string
     let randomValue = Math.floor(Math.random() * selectedIndex.length);
+
+    // Selects character based on random number and updates password
     let selectedCharacter = selectedIndex[randomValue]
     password += selectedCharacter
     console.log(password)
